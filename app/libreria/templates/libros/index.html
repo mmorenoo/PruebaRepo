@@ -1,0 +1,61 @@
+{% extends "base.html"%}
+
+{% block titulo %} Lista de Libros {% endblock %}
+
+{% block contenido %} 
+
+    <div class="card mb-3">
+        <div class="card-header">
+            <a name="" id="" class="btn btn-success" href="{% url 'crear'%}" role="button">Agregar Libro</a>
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">Libros</h4>
+            <div class="table-responsive">
+                <table class="table table-primary">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Titulo</th>
+                            <th scope="col">Imagen</th>
+                            <th scope="col">Descripción</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for libro in object_list%}
+                            {% if libro.estado %}
+                            <tr class="">
+                                <td>{{libro.id}}</td>
+                                <td>{{libro.titulo}}</td>
+                                <td>
+                                    <img src="{{libro.imagen.url}}" height="100" width="100"/>
+                                </td>
+                                <td>{{libro.descripcion}}</td>
+                                <td> 
+                                    <a name="" id="" class="btn btn-info" href="{% url 'editar' libro.id %}" role="button">Editar</a> 
+                                    <a name="" id="" class="btn btn-danger" href="{% url 'eliminar' libro.id %}" role="button">Borrar</a> 
+                                </td>
+                            </tr>
+                            {%endif%}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mb-3">
+                <label for="" class="form-label">LIBROS</label>
+                <select class="form-select form-select-lg" name="" id="">
+                    {% for libro in object_list %}
+                        {% if libro.estado %}
+                            <option selected value="{{libro}}" >{{libro.titulo}}</option>
+                        {% endif %}
+                    {% endfor %}
+
+                </select>
+            </div>
+            
+            
+        </div>
+            
+    </div>
+{% endblock %}
