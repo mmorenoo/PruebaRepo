@@ -70,6 +70,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'core.wsgi.application'
+ALLOWED_HOSTS = ['3.133.97.157']
 
 
 # Database
